@@ -43,6 +43,6 @@ public class BlogService {
     }
 
     public List<Blog> filterByTags(String term) {
-        return repo.findAll().stream().filter(blog -> blog.getTitle().equalsIgnoreCase(term) || blog.getContent().equalsIgnoreCase(term) || blog.getCategory().equalsIgnoreCase(term)).toList();
+        return repo.findByKeyword(term);
     }
 }
