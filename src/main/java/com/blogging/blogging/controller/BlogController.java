@@ -12,7 +12,7 @@ import java.util.List;
 public class BlogController {
 
     @Autowired
-    BlogService blogService;
+    private BlogService blogService;
 
     @GetMapping("/")
     public String api() {
@@ -44,8 +44,8 @@ public class BlogController {
         return blogService.getAllBlogs();
     }
 
-    @GetMapping("/blog/{search}")
-    public List<Blog> filter(@PathVariable String search) {
-        return blogService.filterByTags(search);
+    @GetMapping("/blog")
+    public List<Blog> filter(@RequestParam("term") String term) {
+        return blogService.filterByTags(term);
     }
 }
